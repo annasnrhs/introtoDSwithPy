@@ -1,3 +1,3 @@
 # introtoDSwithPy
 
-This is the notebook and some data sets use in Introduction to Data Science with Python (Coursera)
+There are notebooks and some data sets use in Introduction to Data Science with Python (Coursera)

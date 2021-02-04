@@ -1,0 +1,186 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[1]:
+
+
+import re
+
+
+# In[2]:
+
+
+text = "This is a good day"
+
+#now let's see if it's a good day or not
+if re.search("good", text):
+    print("wonderful")
+else:
+    print("alas")
+
+#search is used to find some patterns and return boolean
+
+
+# in addition to checking for conditionals, we can segment a string.
+# The work that regex does here is called tokenizing, where
+# string is separated into substrings based on patterns
+
+# In[3]:
+
+
+#the findall() and split() functions will parse the string for us and return chunks
+text = "anna works dilligently. anna gets good grades. our student anna is succesful."
+
+re.split("anna", text)
+
+#split will use a pattern for creating a list of substrings
+
+
+# In[4]:
+
+
+#if we wanna to count how many times we have talked about anna, we could use findall()
+re.findall("anna", text)
+
+#findall will look for a pattern and pull out all occurences
+
+
+# the regex specification standard defines a markup languange to describe patterns in text.
+# Anchor is one of them. Anchor specify the start and/or the end of the string that you are trying to match. The caret character ^ means start and the dollar sign $ means end.
+# if you put ^ before text the regex processor retrives must start with the string you specify.
+# for ending u must put the $ character after the string, it means that the text regex retrives must end with the string u specify
+# 
+
+# In[5]:
+
+
+text = "anna works dilligently. anna gets good grades. our student anna is succesful."
+
+re.search("^anna", text)
+
+#the result return a re.Match object tells what pattern was matched, and the location the
+#match was in, as the span
+
+
+# # Pattern and Character Classes
+
+# In[6]:
+
+
+grades = "ACAABAACAAAB"
+
+#how many B's were in the grade list
+re.findall("B", grades)
+
+
+# In[7]:
+
+
+#if we want to count the number of A and B in the list
+
+re.findall("[AB]", grades)
+
+
+# In[8]:
+
+
+#find out all instances where this student receive an A followed by a B or a C
+re.findall('[A][B-C]', grades)
+
+
+# [AB] pattern describe a set of possible characters which could be either (A or B). While the [A][B-C] characters which must have been matched back to back.
+
+# In[9]:
+
+
+re.findall("AB|AC", grades)
+
+
+# In[10]:
+
+
+#caret ^ can be used with the set operator tonegate our results
+re.findall("[^A]", grades)
+
+
+# caret character matched to the beginning of a string as an anchor point, but inside of the set operator the caret will lose their meaning
+
+# In[11]:
+
+
+re.findall('^[^A]', grades)
+
+#we want to match any value at the beginning of the string which is not A
+
+
+# # Quantifiers
+
+# quantifiers are the number of time you want a pattern to be matched in order to match.
+# The most basic quantifiers is expressed as e{m,n}//TIDAK ADA KOMA SEBELUM N.
+# e is the expression or character we are matching
+# m is the minimum number of times you want it to matched
+# n is the maximum number of times the item could be matched
+
+# In[12]:
+
+
+#how many times has this student been on a back-toback A's streak
+s = 'ACAABAACAAAB'
+result = re.findall("A{1,2}", s)
+print(result)
+print(len(result))
+
+
+# In[13]:
+
+
+re.findall("A{1,1}B{1,1}", grades)
+
+
+# In[29]:
+
+
+def names():
+    simple_string = """Amy is 5 years old, and her sister Mary is 2 years old.
+    Ruth and Peter, their parents, have 3 kids."""
+    name = re.findall("[A-Z][a-z]*", simple_string)
+    hasil = print(name)
+    return hasil
+names()
+
+
+# In[30]:
+
+
+assert len(names()) == 4, "There are four names in the simple_string"
+
+
+# In[28]:
+
+
+print(names())
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+

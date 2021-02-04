@@ -1,0 +1,101 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# # Data Files and Summary Statistics
+
+# In[15]:
+
+
+import csv
+
+#ipython 
+get_ipython().run_line_magic('precision', '2')
+
+with open('mpg.csv') as csvfile:
+    mpg = list(csv.DictReader(csvfile))
+
+mpg[:3]
+
+
+# In[16]:
+
+
+len(mpg)
+
+
+# In[17]:
+
+
+#melihat nama kolom
+mpg[0].keys()
+
+
+# In[18]:
+
+
+#average city
+sum(float(d['cty']) for d in mpg) / len(mpg)
+
+
+# In[19]:
+
+
+#average highway
+sum(float(d['hwy']) for d in mpg) / len(mpg)
+
+
+# ## aevarage city mpg is grouped by the number of cylinders a car has
+
+# In[20]:
+
+
+#unique levels for a number of cylinder 
+#nilai cylinder yg dimiliki car pada dataset
+cylinders = set(d['cyl'] for d in mpg)
+cylinders
+
+
+# In[22]:
+
+
+#cari nilai mpg rata2 untuk setiap nilai cyl
+CtyMpgByCyl = []
+for c in cylinders:
+    summpg = 0
+    cyltypecount = 0
+    for d in mpg:
+        if d['cyl'] == c:
+            summpg += float(d['cty'])
+            cyltypecount += 1
+    CtyMpgByCyl.append((c, summpg / cyltypecount))
+
+CtyMpgByCyl.sort(key=lambda x: x[0]) #sort from the lowest
+CtyMpgByCyl    
+
+
+# ## aevarage highway mpg is grouped by the vehicle class
+
+# In[23]:
+
+
+#unnique class
+vehicleclass = set(d['class'] for d in mpg)
+vehicleclass
+
+
+# In[29]:
+
+
+HwyMpgByClass = []
+for t in vehicleclass: #iterate over all vehicle classes
+    summpg = 0
+    vclasscount = 0
+    for d in mpg:
+        if d['class'] == t:
+            summpg += float(d['hwy'])
+            vclasscount += 1 #increment the count
+    HwyMpgByClass.append((t, summpg/ vclasscount)) #append the tuple ('Class', 'avg mpg')
+
+    HwyMpgByClass.sort(key=lambda x:x[1]) #sort by the highest
+HwyMpgByClass
+

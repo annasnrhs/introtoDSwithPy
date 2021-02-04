@@ -1,0 +1,177 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# ## tuple : 
+# punya item berurutan dan tidak bisa diubah ketika sudah dibuat
+
+# In[1]:
+
+
+x = (1, 'a', 2, 'b')
+type(x)
+
+
+# ## list : 
+# bisa diubah panjang, jumlah elemen, nilai elemen
+# 
+# append : append new items to the end of the list
+
+# In[2]:
+
+
+x = [1, 'a', 2, 'b']
+type(x)
+
+
+# In[4]:
+
+
+x.append(3.3)
+print(x)
+
+
+# list dan tuple : iterable type (you can write loops to go through every value they hold)
+
+# In[5]:
+
+
+for item in x:
+    print(item)
+
+
+# In[6]:
+
+
+i = 0
+while (i != len(x)) :
+    print(x[i])
+    i = i+1
+
+
+# mathematical operation in list
+# 
+# ##Plus (+)
+# concatenates list
+
+# In[7]:
+
+
+[1, 2] + [3, 4]
+
+
+# In[ ]:
+
+
+##asterisks (*) : repeat the value of a list
+
+
+# In[8]:
+
+
+[1] * 3
+
+
+# # slicing
+# x[a:b]
+# a mulai dari mana
+# b berakhir di mana
+# 
+# b : exclusive end
+# 
+# kalo nilai a dan b negatif: berarti mulai dari huruf akhir
+
+# In[10]:
+
+
+x = "This is a string"
+print(x[0])
+print(x[0:1])
+print(x[0:2])
+print(x[1:4])
+
+
+# In[14]:
+
+
+print(x[-1])
+print(x[-4:-1])
+
+
+# In[15]:
+
+
+x[:3]
+#print mulai dari item 0 s.d 3 (tiga item pertama)
+
+
+# In[16]:
+
+
+x[3:]
+#print(item index ke 3 sampe akhir)
+
+
+# In[17]:
+
+
+firstname = "Anna"
+lastname = "hasanah"
+
+print(firstname + ' ' + lastname)
+print(firstname * 3)
+print('An' in firstname)
+
+
+# ## dictionary
+# punya label
+# tidak punya urutan
+# kalo insert nilai, harus set key untuk memanggilnya nanti 
+
+# In[18]:
+
+
+x = {'siti nur hasanah': 'anna@gmail.com', 'eri molida osni': 'eri@gmail.com'}
+x['siti nur hasanah']
+
+
+# In[21]:
+
+
+x['mulyadi'] = None
+x['mulyadi']
+
+
+# In[22]:
+
+
+for name in x:
+    print(x[name])
+
+
+# In[23]:
+
+
+for email in x.values():
+    print(email)
+
+
+# In[24]:
+
+
+for name, email in x.items():
+    print(name)
+    print(email)
+
+
+# In[25]:
+
+
+x = ('Anna', 'Hasanah', 'anna@gmail.com')
+fname, lname, email = x
+
+
+# In[26]:
+
+
+fname
+
